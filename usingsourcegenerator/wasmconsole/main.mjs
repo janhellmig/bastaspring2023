@@ -19,5 +19,7 @@ const config = getConfig();
 const exports = await getAssemblyExports(config.mainAssemblyName);
 const text = exports.MyClass.Greeting();
 console.log(text);
+const result = await exports.MyClass.Add(38, 4);
+console.log(result);
 
 await dotnet.run();
