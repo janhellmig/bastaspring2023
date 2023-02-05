@@ -1,0 +1,6 @@
+[submodule "InstantApi"]
+	path = InstantAPIs
+	url = https://github.com/csharpfritz/InstantAPIs.git
+[submodule "InstantAPIs"]
+	path = InstantAPIs
+	url = https://github.com/christiannagel/InstantAPIs.git
