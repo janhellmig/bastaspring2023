@@ -31,9 +31,13 @@ $packageFiles = Get-ChildItem -Path $packagesFolderPath -Filter "*.nupkg"
 
 # Iterate through each package file and add it to the project using dotnet add package command
 foreach ($packageFile in $packageFiles) {
-    $packageName = $packageFile.Name.Replace(".nupkg", "")
-    $packageVersion = $packageName.Split(".")[-1]
-    
-    $command = "dotnet add ""$projectPath"" package ""$packageName"" --version ""$packageVersion"" --package-directory ""$packagesFolderPath"""
-    Invoke-Expression $command
+    $packageNameRegex = "(?<packageName>.+)\.(?<packageVersion>\d+\.\d+\.\d+)\.nupkg"
+    $packageNameMatch = $packageFile.Name -match $packageNameRegex
+    if ($packageNameMatch) {
+        $packageName = $matches["packageName"]
+        $packageVersion = $matches["packageVersion"]
+
+        $command = "dotnet add ""$projectPath"" package ""$packageName"" --version ""$packageVersion"""
+        Invoke-Expression $command
+    }
 }
