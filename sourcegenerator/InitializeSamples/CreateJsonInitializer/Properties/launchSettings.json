@@ -2,7 +2,7 @@
   "profiles": {
     "CreateJsonInitializer": {
       "commandName": "Project",
-      "commandLineArgs": "c:\\mypackages"
+      "commandLineArgs": "C:\\githublearn\\bastasource\\bastaspring2023\\sourcegenerator\\InitializeSamples\\customer1"
     }
   }
 }

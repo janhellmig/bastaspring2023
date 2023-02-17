@@ -9,6 +9,8 @@
 
   <ItemGroup>
     <PackageReference Include="InitializeGenerator" Version="1.0.15" />
+    <PackageReference Include="One" Version="1.1.1" />
+    <PackageReference Include="Two" Version="1.1.1" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,5 +1,5 @@
-$projectPath = "C:\githublearn\bastaspring2023\sourcegenerator\InitializeSamples\ClientApp\ClientApp.csproj"
-$packagesFolderPath = "C:\githublearn\bastaspring2023\sourcegenerator\InitializeSamples\customer1"
+$projectPath = "C:\githublearn\bastasource\bastaspring2023\sourcegenerator\InitializeSamples\ClientApp\ClientApp.csproj"
+$packagesFolderPath = "C:\githublearn\bastasource\bastaspring2023\sourcegenerator\InitializeSamples\customer1"
 
 # Get the parent folder of the project path
 $projectFolder = Split-Path $projectPath -Parent
