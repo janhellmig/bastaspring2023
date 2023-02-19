@@ -1,16 +1,17 @@
 ﻿using ParseSample;
 
-ReadOnlySpan<char> name = "Christian Ernst Nagel".AsSpan();
+ReadOnlySpan<char> name = "Andreas Nikolaus Lauda".AsSpan();
 if (Person.TryParse(name, null, out Person? p))
 {
     Console.WriteLine(p.FirstName);
     Console.WriteLine(p.MiddleName);
     Console.WriteLine(p.LastName);
+    Console.WriteLine(p);
 }
 
 QueryParam<int> qp1 = new("42", 0);
 Console.WriteLine(qp1.Value);
-QueryParam<Person> qp2 = new("Tom Turbo", Person.Empty);
+QueryParam<Person> qp2 = new("Bruce Wayne", Person.Empty);
 Person p2 = qp2.Value;
 Console.WriteLine(p2);
 

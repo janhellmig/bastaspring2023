@@ -3,9 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.32916.344
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathSample", "MathSample\MathSample.csproj", "{C6500402-36E3-463D-94A2-B310F2792C52}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathSample2", "MathSample2\MathSample2.csproj", "{168624E0-3F9A-4DAB-BD65-6386B415C32E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MathSample", "MathSample\MathSample.csproj", "{C6500402-36E3-463D-94A2-B310F2792C52}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +15,6 @@ Global
 		{C6500402-36E3-463D-94A2-B310F2792C52}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C6500402-36E3-463D-94A2-B310F2792C52}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C6500402-36E3-463D-94A2-B310F2792C52}.Release|Any CPU.Build.0 = Release|Any CPU
-		{168624E0-3F9A-4DAB-BD65-6386B415C32E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{168624E0-3F9A-4DAB-BD65-6386B415C32E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{168624E0-3F9A-4DAB-BD65-6386B415C32E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{168624E0-3F9A-4DAB-BD65-6386B415C32E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -2,15 +2,16 @@
 
 namespace ParseSample;
 
-public class Person : IParsable<Person>, ISpanParsable<Person>, ISpanFormattable
+// nominal record type
+public record class Person : IParsable<Person>, ISpanParsable<Person>, ISpanFormattable
 {
     private static Person? s_person = default;
     public static Person Empty => s_person ??= 
         new Person { FirstName = string.Empty, LastName = string.Empty };
 
-    public required string FirstName { get; set; }
-    public required string LastName { get; set; }
-    public string? MiddleName { get; set; }
+    public required string FirstName { get; init; }
+    public required string LastName { get; init; }
+    public string? MiddleName { get; init; }
 
     #region IParsable
     public static Person Parse(string s, IFormatProvider? provider = default)
@@ -83,6 +84,7 @@ public class Person : IParsable<Person>, ISpanParsable<Person>, ISpanFormattable
     #region ISpanFormattable
     public bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format, IFormatProvider? provider = default)
     {
+        // pattern match with Span<T> - new since C# 11!!
         ReadOnlySpan<char> dest = format switch
         {
             "F" => FirstName.AsSpan(),
@@ -104,7 +106,13 @@ public class Person : IParsable<Person>, ISpanParsable<Person>, ISpanFormattable
     }
 
     public override string ToString()
-        => $"{FirstName} {MiddleName} {LastName}";
+    {
+        return this switch
+        {
+            { MiddleName: null } => $"{FirstName} {LastName}",
+            _ => $"{FirstName} {MiddleName} {LastName}"
+        };
+    }
 
     public string ToString(string? format, IFormatProvider? formatProvider = default) => 
         format switch

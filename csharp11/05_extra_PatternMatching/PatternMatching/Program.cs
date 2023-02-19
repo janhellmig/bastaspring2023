@@ -1,11 +1,11 @@
 ﻿using static TrafficLight;
 
-TypePatternSample();
-PatternWithLogicalOperator();
+//TypePatternSample();
+//PatternWithLogicalOperator();
 
-await TuplesPatternSampleAsync();
+//await TuplesPatternSampleAsync();
 
-PropertyPatternSample();
+//PropertyPatternSample();
 
 ListPatternSample();
 
@@ -80,7 +80,7 @@ void PropertyPatternSample()
         {
             { FirstName: "Clark" } => $"{person} is a Clark",
             { Address: { City: "Smallville" } } => $"{person} is from Smallville",
-            { Address.City: "Gotham City" } => $"{person} is from Gotham City",  // new with C# 10
+            { Address.City: "Gotham City" } => $"{person} is from Gotham City",  // new since C# 10
             _ => $"{person} is not listed"
         };
 
@@ -107,6 +107,36 @@ void ListPatternSample()
     int[] two = { 1, 2, 4, 5, 6, 9, 11, 5 };
     Console.WriteLine(ListPattern(one));
     Console.WriteLine(ListPattern(two));
+
+    double ListPattern2(string[] data)
+    {
+        double balance = 0.0;
+        foreach (var line in data)
+        {
+            string[] values = line.Split(", ");
+
+            balance += values switch
+            {
+                [_, "DEPOSIT", _, var amount] => double.Parse(amount),
+                [_, "WITHDRAWL", _, var amount] => -double.Parse(amount),
+                [_, "FEE", var amount] => -double.Parse(amount),
+                _ => 0.0
+            };
+        }
+        return balance;
+
+    }
+
+    string[] data =
+    {
+        "01/2023, DEPOSIT, Initial deposit, 3000",
+        "02/2023, WITHDRAWL, John, 100",
+        "02/2023, DEPOSIT, Mark, 300",
+        "03/2023, FEE, 10"
+    };
+
+    double balance = ListPattern2(data);
+    Console.WriteLine(balance);
 }
 
 

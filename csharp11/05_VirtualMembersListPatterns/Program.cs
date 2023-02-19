@@ -25,8 +25,8 @@ int AddAll1(int[] values)
     return result;
 }
 
-// with INumber<T> constraint!
-T AddAll2<T>(T[] values) where T : INumber<T>
+// with INumberBase<T> constraint!
+T AddAll2<T>(T[] values) where T : INumberBase<T>
 {
     T result = T.Zero;
     foreach (var value in values)
@@ -36,15 +36,15 @@ T AddAll2<T>(T[] values) where T : INumber<T>
     return result;
 }
 
-// with list pattern matching - and INumber<T> constraint
-T AddAll3<T>(T[] values) where T : INumber<T> =>
+// with list pattern matching - and INumberBase<T> constraint
+T AddAll3<T>(T[] values) where T : INumberBase<T> =>
     values switch
     {
         [] => T.Zero,
         [var first, .. var rest] => first + AddAll3(rest),
     };
 
-T AddAll4<T>(Span<T> values) where T : INumber<T> =>
+T AddAll4<T>(Span<T> values) where T : INumberBase<T> =>
     values switch
     {
         [] => T.Zero,
