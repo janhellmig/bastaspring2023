@@ -1,14 +1,13 @@
 ﻿using static System.Console;
 
-namespace SyntaxTreeSample
+namespace SyntaxTreeSample;
+
+// Hello World! Sample Program
+public class Program
 {
-    // Hello World! Sample Program
-    public class Program
+    // Hello World! Sample Method
+    public static void Hello()
     {
-        // Hello World! Sample Method
-        public static void Hello()
-        {
-            WriteLine("Hello, World!");
-        }
+        WriteLine("Hello, World!");
     }
 }

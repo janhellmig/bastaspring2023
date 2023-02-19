@@ -1,18 +1,17 @@
 ﻿
-namespace TransformMethods
-{
-    class Sample
-    {
-        public void foo()
-        {
-        }
+namespace TransformMethods;
 
-        public void bar()
-        {
-        }
-        
-        private void fooBar()
-        {
-        }
+class Sample
+{
+    public void foo()
+    {
+    }
+
+    public void bar()
+    {
+    }
+    
+    private void fooBar()
+    {
     }
 }

@@ -1,19 +1,14 @@
 ﻿using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
-using System.Collections.Generic;
 
-namespace SyntaxWalker
+namespace SyntaxWalker;
+
+class UsingCollector : CSharpSyntaxWalker
 {
-    class UsingCollector : CSharpSyntaxWalker
+    private readonly List<UsingDirectiveSyntax> _usingDirectives = new List<UsingDirectiveSyntax>();
+    public IEnumerable<UsingDirectiveSyntax> UsingDirectives => _usingDirectives;
+    public override void VisitUsingDirective(UsingDirectiveSyntax node)
     {
-        private readonly List<UsingDirectiveSyntax> _usingDirectives = new List<UsingDirectiveSyntax>();
-        public IEnumerable<UsingDirectiveSyntax> UsingDirectives => _usingDirectives;
-        public override void VisitUsingDirective(UsingDirectiveSyntax node)
-        {
-            _usingDirectives.Add(node);
-        }
-
-
-
+        _usingDirectives.Add(node);
     }
 }
