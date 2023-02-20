@@ -7,3 +7,20 @@ Jährlich gibt es neue Features in C# und .NET. Auch C# 11 bietet wieder neue Fu
 ## Generating Source Code Dynamically
 
 Source Generators sind eine neue Möglichkeit, Code zu generieren. Der Code wird dabei schon während des Tippens im Editor erzeugt. Damit steht IntelliSense auch gleich zur Verfügung. In dieser Session lernen Sie die Grundlagen der neuen Generation der Source Generators und wie Sie Source Generators, die bereits mit .NET mitgeliefert werden, in Ihren Applikationen verwenden können, darunter z. B. für Logging, JSON-Serialisierung, EF Core, SignalR ASP.NET Core und mehr.
+
+```mermaid
+---
+title: Compilation
+---
+flowchart TB
+
+A[Compilation Runs] --> B[Source Generator Step]
+B --> C
+D --> E[Generated source code input of compilation]
+E --> F[Compilation resumes]
+
+subgraph Source Generator
+C([Analyze source code]) --> D([Generate new source code])
+end
+
+```
