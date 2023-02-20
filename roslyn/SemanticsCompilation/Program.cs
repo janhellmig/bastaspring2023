@@ -14,18 +14,28 @@ class Program
 
     static async Task ProcessAsync()
     {
-        string source = File.ReadAllText("HelloWorld.cs");
+        string source = File.ReadAllText("../../../HelloWorld.cs");
         SyntaxTree tree = CSharpSyntaxTree.ParseText(source);
         if (await tree.GetRootAsync() is CompilationUnitSyntax root)
         {
             // get Hello method
-            MethodDeclarationSyntax? helloMethod = root.DescendantNodes().OfType<MethodDeclarationSyntax>().Where(m => m.Identifier.ValueText == "Hello").FirstOrDefault();
+            MethodDeclarationSyntax? helloMethod = root
+                .DescendantNodes()
+                .OfType<MethodDeclarationSyntax>()
+                .Where(m => m.Identifier.ValueText == "Hello")
+                .FirstOrDefault();
+
             // get hello variable
-            VariableDeclaratorSyntax? helloVariable = root.DescendantNodes().OfType<VariableDeclaratorSyntax>().Where(v => v.Identifier.ValueText == "hello").FirstOrDefault();
+            VariableDeclaratorSyntax? helloVariable = root
+                .DescendantNodes()
+                .OfType<VariableDeclaratorSyntax>()
+                .Where(v => v.Identifier.ValueText == "hello")
+                .FirstOrDefault();
 
             var compilation = CSharpCompilation.Create("HelloWorld")
                 .AddReferences(MetadataReference.CreateFromFile(typeof(object).Assembly.Location))
                 .AddSyntaxTrees(tree);
+
             EmitResult result = compilation.Emit("HelloWorld.exe");
 
             ISymbol? helloVariableSymbol1 = compilation.GetSymbolsWithName(name => name == "Hello").FirstOrDefault();

@@ -4,6 +4,11 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace SyntaxQuery;
 
+// Use LINQ queries accessing the syntax tree
+// to find public methods and properties with lowercase first character
+
+// Not using top-level statements because access modifiers are used that are queried
+
 class Program
 {
     static async Task Main()

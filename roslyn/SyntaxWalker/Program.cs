@@ -1,6 +1,8 @@
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 
+using static System.Console;
+
 namespace SyntaxWalker;
 
 class Program
@@ -55,7 +57,7 @@ class Program
             .OrderBy(u => u[..^1]);
         foreach (var item in orderedUsings.Union(usingStatics))
         {
-            Console.WriteLine(item);
+            WriteLine(item);
         }
     }
 }
