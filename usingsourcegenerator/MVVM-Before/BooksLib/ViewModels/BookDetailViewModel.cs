@@ -51,7 +51,7 @@ public class BookDetailViewModel : EditableItemViewModel<Book>
         }
         catch (Exception ex)
         {
-            _logger.LogError("error {0} in {1}", ex.Message, nameof(OnSaveAsync));
+            _logger.LogError("error {message} in {method}", ex.Message, nameof(OnSaveAsync));
             await _dialogService.ShowMessageAsync("Error saving the data");
         }
     }
