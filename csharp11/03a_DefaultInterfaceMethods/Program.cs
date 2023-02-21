@@ -12,6 +12,8 @@ foreach (var name in jNames)
     Console.WriteLine(name);
 }
 
+// mixin sample
+
 OverheadLight ol = new();
 ol.SwitchOn();
 ol.SwitchOff();
@@ -24,6 +26,7 @@ if (ol is IBlinkingLight blinkingLight)
     await blinkingLight.Blink(200, 3);
 }
 
+// interface with no implementation
 public interface ILight
 {
     void SwitchOn();
@@ -31,6 +34,37 @@ public interface ILight
     bool IsOn();
 }
 
+// Timer light with default implementation
+public interface ITimerLight : ILight
+{
+    public async Task TurnOnFor(int duration)
+    {
+        Console.WriteLine("timer turned on");
+        SwitchOn();
+        await Task.Delay(duration);
+        SwitchOff();
+        Console.WriteLine("timer turned off");
+    }
+}
+
+// IBlinkingLight with default implementation
+public interface IBlinkingLight : ILight
+{
+    public async virtual Task Blink(int duration, int repeatCount)
+    {
+        for (int i = 0; i < repeatCount; i++)
+        {
+            Console.WriteLine($"blinking turned on {i}");
+            SwitchOn();
+            await Task.Delay(duration);
+            SwitchOff();
+            Console.WriteLine("blinking turned off");
+        }
+    }
+}
+
+// OverheadLigth with blinking and timer light
+// and a custom implementation of blink
 public class OverheadLight : ILight, IBlinkingLight, ITimerLight
 {
     private bool _isOn;
@@ -42,34 +76,8 @@ public class OverheadLight : ILight, IBlinkingLight, ITimerLight
 
     async public Task Blink(int duration, int repeatCount)
     {
+        await (this as IBlinkingLight).Blink(duration, repeatCount);  
         await Task.Delay(duration);
         Console.WriteLine("custom blink");
-    }
-}
-
-public interface ITimerLight : ILight
-{
-    async Task TurnOnFor(int duration)
-    {
-        Console.WriteLine("timer turned on");
-        SwitchOn();
-        await Task.Delay(duration);
-        SwitchOff();
-        Console.WriteLine("timer turned off");
-    }
-}
-
-public interface IBlinkingLight : ILight
-{
-    async virtual Task Blink(int duration, int repeatCount)
-    {
-        for (int i = 0; i < repeatCount; i++)
-        {
-            Console.WriteLine($"blinking turned on {i}");
-            SwitchOn();
-            await Task.Delay(duration);
-            SwitchOff();
-            Console.WriteLine("blinking turned off");
-        }
     }
 }
