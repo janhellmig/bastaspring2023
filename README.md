@@ -15,7 +15,7 @@ Jährlich gibt es neue Features in C# und .NET. Auch C# 11 bietet wieder neue Fu
 * [Parsing using static interface members](csharp11/03c_ParseSample)
 * [Generic math](csharp11/04_MathSample)
 * [Pattern matching](csharp11/05_PatternMatching)
-* [Virtual Members with List Patterns](charp11/05_VirtualMembersListPatterns)
+* [Virtual Members with List Patterns](csharp11/05_VirtualMembersListPatterns)
 * [String Literals](csharp11/06_StringLiterals)
 * [AOT](csharp11/07_AOT)
 
