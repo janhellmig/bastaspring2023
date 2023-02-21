@@ -2,8 +2,6 @@
 
 // Regex abcOrDev = new("abc|def", RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
-
-
 IsMatch("abc");
 IsMatch("ABC");
 IsMatch("ghi");
