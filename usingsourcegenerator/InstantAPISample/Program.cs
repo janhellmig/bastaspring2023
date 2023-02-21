@@ -32,12 +32,6 @@ app.UseHttpsRedirection();
 
 app.MapBooksContextToAPIs();
 
-
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
-
 app.MapGet("/init", (BooksContext context) =>
 {
     context.Database.EnsureCreated();
